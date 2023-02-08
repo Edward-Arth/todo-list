@@ -8,7 +8,46 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <div id = "gridContainer">
+        <div id = "header"></div>
+        <div id = "sidebar">
+            <ul id="projectList"></ul>
+        </div>
+        <div id = "projectDisplay"></div>
+    </div>
+    <div id = "formContainer">
+        <form action = "/action_page.php" id="taskForm">
+            <h1>Task info</h1>
+
+            <label for="task" class="taskLabels"></label> <b>Task</b>
+            <input type="text" name="task" class="taskInputs" maxlength="50">
+
+            <label for="description" class="taskLabels"></label> <b>Description</b>
+            <input type="text" name="description" class="taskInputs" maxlength="200">
+
+            <label for="dueDate" class="taskLabels"></label> <b>Due Date</b>
+            <input type="date" name="dueDate" class="taskInputs">
+
+            <label for="priority" class="taskLabels"></label> <b>Priority</b>
+            <input type="radio" id="high" name="priority" class="taskInputs" value="high">
+            <label for="high">High</label>
+            <input type="radio" id="normal" name="priority" class="taskInputs" value="normal">
+            <label for="normal">Normal</label>
+            <input type="radio" id="low" name="priority" class="taskInputs" value="low">
+            <label for="low">Low</label>
+
+            <button type="submit" class="formBtns" id="taskSubmit">Create</button>
+            <button type="button" class="formBtns" id="taskCancel" onclick="closeForm()">Cancel</button>
+        </form>
+
+        <form action = "/action_page.php" id="projectForm">
+            <label for="project"></label> <b>Project Name</b>
+            <input type="text" name="project" id="projectName" maxlength="50">
+
+            <button type="submit" class="formBtns" id="projectSubmit">Create</button>
+            <button type="button" class="formBtns" id="projectCancel" onclick="closeForm()">Cancel</button>
+        </form>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
