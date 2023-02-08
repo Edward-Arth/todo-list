@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#gridContainer {
+    width: 100vw;
+    height: 100vh;
+    display:grid;
+    grid-template-rows: 1fr 7fr;
+    grid-template-columns: 1fr 3fr;
+}
+
+#header {
+    grid-area: 1/1/1/3;
+}
+
+#projectDisplay {
+    grid-area: 2/2/2/2;
+}
+
+#sidebar {
+    grid-area: 2/1/2/1
+}
