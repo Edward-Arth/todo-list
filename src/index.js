@@ -30,16 +30,24 @@ function createProject () {
         let listed = document.createElement("li");
         getList.appendChild(listed);
         listed.textContent = newProject;
+        listed.classList.add(newProject);
 
         let projectDisplay = document.getElementById("projectDisplay");
         let projectDiv = document.createElement("div");
         projectDisplay.appendChild(projectDiv);
-        projectDiv.textContent = "hello";
+        projectDiv.classList.add(newProject);
+        projectDiv.style.display = "none";
 
         listed.addEventListener("click", () => {
-            let projectsCollective = projectDisplay.children;
-            projectsCollective.style.display = "none";
-            projectDiv.style.display = "block";
+            let allProjects = projectDisplay.children;
+            for (let i = 0; i < allProjects.length; i++) {
+                allProjects[i].style.display = "none";
+            }
+            let thisClass = listed.className;
+            let thisProject = document.getElementsByClassName(thisClass);
+            for (let i = 0; i < thisProject.length; i++) {
+                thisProject[i].style.display = "block";
+            };
         });
     };
 
@@ -48,7 +56,6 @@ function createProject () {
         event.preventDefault();
         projectArray.push(projectName);
         listProject ();
-        console.log(projectArray);
     };
 };
 
