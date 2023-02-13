@@ -22,3 +22,18 @@ body {
 #sidebar {
     grid-area: 2/1/2/1
 }
+
+#taskForm,
+#projectForm {
+    width: 20%;
+    height:40%;
+    margin-top: 3%;
+    position:fixed;
+    top:25%;
+    background-color: #E8E8E8;
+}
+
+#taskForm,
+#projectForm {
+    display: none;
+}
