@@ -20,24 +20,24 @@
             <h1>Task info</h1>
 
             <label for="task" class="taskLabels"></label> <b>Task</b>
-            <input type="text" name="task" class="taskInputs" maxlength="50">
+            <input type="text" name="task" class="taskInputs" id="taskID" maxlength="50">
 
             <label for="description" class="taskLabels"></label> <b>Description</b>
-            <input type="text" name="description" class="taskInputs" maxlength="200">
+            <input type="text" name="description" class="taskInputs" id="descriptionID" maxlength="200">
 
             <label for="dueDate" class="taskLabels"></label> <b>Due Date</b>
-            <input type="date" name="dueDate" class="taskInputs">
+            <input type="date" name="dueDate" class="taskInputs" id="dueDateID">
 
             <label for="priority" class="taskLabels"></label> <b>Priority</b>
-            <input type="radio" id="high" name="priority" class="taskInputs" value="high">
+            <input type="radio" id="high" name="priority" class="taskInputs" class="priority" value="high">
             <label for="high">High</label>
-            <input type="radio" id="normal" name="priority" class="taskInputs" value="normal">
+            <input type="radio" id="normal" name="priority" class="taskInputs" class="priority" value="normal">
             <label for="normal">Normal</label>
-            <input type="radio" id="low" name="priority" class="taskInputs" value="low">
+            <input type="radio" id="low" name="priority" class="taskInputs" class="priority" value="low">
             <label for="low">Low</label>
 
             <button type="submit" class="formBtns" id="taskSubmit">Create</button>
-            <button type="button" class="formBtns" id="taskCancel" onclick="closeForm()">Cancel</button>
+            <button type="button" class="formBtns" id="taskCancel">Cancel</button>
         </form>
 
         <form action = "/action_page.php" id="projectForm">
@@ -45,7 +45,7 @@
             <input type="text" name="project" id="projectName" maxlength="50">
 
             <button type="submit" class="formBtns" id="projectSubmit">Create</button>
-            <button type="button" class="formBtns" id="projectCancel" onclick="closeForm()">Cancel</button>
+            <button type="button" class="formBtns" id="projectCancel">Cancel</button>
         </form>
     </div>
     <script src="main.js"></script>
