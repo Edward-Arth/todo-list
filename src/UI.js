@@ -1,10 +1,13 @@
-import taskGenerator from './task.js';
-export default function buttons () {
+import taskSubmitFunky from './task.js';
+export default function userInterface () {
     const projectArray = [];
     const sidebar = document.getElementById("sidebar");
     const projectForm = document.getElementById("projectForm");
     const projectCancel = document.getElementById("projectCancel");
     const projectSubmit = document.getElementById("projectSubmit");
+    const taskForm = document.getElementById("taskForm");
+    const taskCancel = document.getElementById("taskCancel");
+    const taskSubmit = document.getElementById("taskSubmit");
 
     const newProjectButton = (() => {
         const newProject = document.createElement("button");
@@ -12,6 +15,8 @@ export default function buttons () {
         newProject.textContent = "Create new project";
         sidebar.appendChild(newProject);
         newProject.addEventListener("click", () => {
+            taskForm.style.display = "none";
+            taskForm.reset();
             projectForm.style.display = "block";
         });
     })();
@@ -22,6 +27,8 @@ export default function buttons () {
         parent.appendChild(newTask);
         newTask.textContent = "Add new task";
         newTask.addEventListener("click", () => {
+            projectForm.style.display = "none";
+            projectForm.reset();
             taskForm.style.display = "block";
         });
     };
@@ -53,8 +60,29 @@ export default function buttons () {
 
         //taskGenerator is a method from the task module
         let taskList = document.createElement("div");
+        taskList.id = "taskList";
+        taskList.classList.add(newProject);
         projectDiv.appendChild(taskList);
-        taskGenerator(taskList);
+
+        function getTaskList () {
+            let allProjects = projectDisplay.children;
+            for (let i = 0; i < allProjects.length; i++) {
+                if (allProjects[i].style.display === "block") {
+                    let taskListClass = document.getElementsByClassName(allProjects[i].className);
+                    let snipedTaskList = taskListClass.namedItem("taskList");
+                    return snipedTaskList;
+                };
+            };
+        };
+
+        taskSubmit.addEventListener("click", taskSubmitClick, false);
+
+        function taskSubmitClick (event) {
+            event.preventDefault();
+            let taskList = getTaskList();
+            taskSubmitFunky(taskList);
+        };
+
 
         listed.addEventListener("click", () => {
             let allProjects = projectDisplay.children;
@@ -68,7 +96,6 @@ export default function buttons () {
             };
         });
     };
-
 
     projectSubmit.addEventListener("click", projectSubmitClick, false);
 

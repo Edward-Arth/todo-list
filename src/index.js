@@ -1,3 +1,3 @@
-import buttons from './UI.js';
+import userInterFace from './UI.js';
 
-buttons ();
+userInterFace ();
