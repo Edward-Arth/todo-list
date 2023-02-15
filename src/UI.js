@@ -48,41 +48,22 @@ export default function userInterface () {
         let getList = document.getElementById("projectList");
         let listed = document.createElement("li");
         getList.appendChild(listed);
+        let newProjectStr = newProject.toString();
+        let projectClassName = newProjectStr.replace(/\s/g, '');
         listed.textContent = newProject;
-        listed.classList.add(newProject);
+        listed.classList.add(projectClassName);
 
         let projectDisplay = document.getElementById("projectDisplay");
         let projectDiv = document.createElement("div");
         projectDisplay.appendChild(projectDiv);
-        projectDiv.classList.add(newProject);
+        projectDiv.classList.add(projectClassName);
         projectDiv.style.display = "none";
         newTaskButton(projectDiv);
 
-        //taskGenerator is a method from the task module
         let taskList = document.createElement("div");
         taskList.id = "taskList";
-        taskList.classList.add(newProject);
+        taskList.classList.add(projectClassName);
         projectDiv.appendChild(taskList);
-
-        function getTaskList () {
-            let allProjects = projectDisplay.children;
-            for (let i = 0; i < allProjects.length; i++) {
-                if (allProjects[i].style.display === "block") {
-                    let taskListClass = document.getElementsByClassName(allProjects[i].className);
-                    let snipedTaskList = taskListClass.namedItem("taskList");
-                    return snipedTaskList;
-                };
-            };
-        };
-
-        taskSubmit.addEventListener("click", taskSubmitClick, false);
-
-        function taskSubmitClick (event) {
-            event.preventDefault();
-            let taskList = getTaskList();
-            taskSubmitFunky(taskList);
-        };
-
 
         listed.addEventListener("click", () => {
             let allProjects = projectDisplay.children;
@@ -106,5 +87,24 @@ export default function userInterface () {
         listProject ();
         projectForm.style.display = "none";
         projectForm.reset();
+    };
+
+    function getTaskList () {
+        let allProjects = projectDisplay.children;
+        for (let i = 0; i < allProjects.length; i++) {
+            if (allProjects[i].style.display === "block") {
+                let taskListClass = document.getElementsByClassName(allProjects[i].className);
+                let snipedTaskList = taskListClass.namedItem("taskList");
+                return snipedTaskList;
+            };
+        };
+    };
+
+    taskSubmit.addEventListener("click", taskSubmitClick, false);
+
+    function taskSubmitClick (event) {
+        event.preventDefault();
+        let taskList = getTaskList();
+        taskSubmitFunky(taskList);
     };
 };
