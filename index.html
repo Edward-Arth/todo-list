@@ -9,7 +9,9 @@
 </head>
 <body>
     <div id = "gridContainer">
-        <div id = "header"></div>
+        <div id = "header">
+            <div id="pageTitle">Todo List</div>
+        </div>
         <div id = "sidebar">
             <ul id="projectList"></ul>
         </div>
@@ -17,35 +19,47 @@
     </div>
     <div id = "formContainer">
         <form action = "/action_page.php" id="taskForm">
-            <h1>Task info</h1>
+            <div id="taskFormTitle">Task info</div>
 
-            <label for="task" class="taskLabels"></label> <b>Task</b>
+            <label for="task" class="taskLabels">Task</label>
             <input type="text" name="task" class="taskInputs" id="taskID" maxlength="50">
 
-            <label for="description" class="taskLabels"></label> <b>Description</b>
-            <input type="text" name="description" class="taskInputs" id="descriptionID" maxlength="200">
+            <label for="description" class="taskLabels">Description</label> 
+            <textarea name="description" rows="20" cols="50" class="taskInputs" id="descriptionID"></textarea>
 
-            <label for="dueDate" class="taskLabels"></label> <b>Due Date</b>
+            <label for="dueDate" class="taskLabels">Due date</label>
             <input type="date" name="dueDate" class="taskInputs" id="dueDateID">
 
-            <label for="priority" class="taskLabels"></label> <b>Priority</b>
-            <input type="radio" id="high" name="priority" class="taskInputs" class="priority" value="high">
-            <label for="high">High</label>
-            <input type="radio" id="normal" name="priority" class="taskInputs" class="priority" value="normal">
-            <label for="normal">Normal</label>
-            <input type="radio" id="low" name="priority" class="taskInputs" class="priority" value="low">
-            <label for="low">Low</label>
+            <label for="priority" id="priorityLabel" class="taskLabels">Priority</label>
+            <div id="priorityDiv">
+                <div>
+                    <input type="radio" id="high" name="priority" class="priorityInputs" class="priority" value="High">
+                    <label for="high">High</label>
+                </div>
+                <div>
+                    <input type="radio" id="normal" name="priority" class="priorityInputs" class="priority" value="Normal">
+                    <label for="normal">Normal</label>
+                </div>
+                <div>
+                    <input type="radio" id="low" name="priority" class="priorityInputs" class="priority" value="Low">
+                    <label for="low">Low</label>
+                </div>
+            </div>
 
-            <button type="submit" class="formBtns" id="taskSubmit">Create</button>
-            <button type="button" class="formBtns" id="taskCancel">Cancel</button>
+            <div id="taskButtons">
+                <button type="submit" class="taskBtns" id="taskSubmit">Create</button>
+                <button type="button" class="taskBtns" id="taskCancel">Cancel</button>
+            </div>
         </form>
 
         <form action = "/action_page.php" id="projectForm">
-            <label for="project"></label> <b>Project Name</b>
-            <input type="text" name="project" id="projectName" maxlength="50">
+            <label for="project" id="projectLabel">Project name</label>
+            <input type="text" name="project" id="projectName" maxlength="25" required />
 
-            <button type="submit" class="formBtns" id="projectSubmit">Create</button>
-            <button type="button" class="formBtns" id="projectCancel">Cancel</button>
+            <div id="projectButtons">
+                <button type="submit" class="formBtns" id="projectSubmit">Create</button>
+                <button type="button" class="formBtns" id="projectCancel">Cancel</button>
+            </div>
         </form>
     </div>
     <script src="main.js"></script>
