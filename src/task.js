@@ -7,7 +7,21 @@ const Task = (title, description, dueDate, priority) => {
 function taskBoxFactory (Task, parent) {
     let taskBox = document.createElement("div");
     parent.appendChild(taskBox);
-    taskBox.id = taskBox;
+    taskBox.id = "taskBox";
+
+    let completeButton = document.createElement("button");
+    taskBox.appendChild(completeButton);
+    completeButton.id = "completeButton";
+    completeButton.addEventListener("click", () => {
+        if (completeButton.textContent === "") {
+            taskBox.style.backgroundColor = "#4FFFB0";
+            completeButton.textContent = "✓";
+        }
+        else {
+            taskBox.style.backgroundColor = "";
+            completeButton.textContent = "";
+        }
+    });
 
     let taskBoxTitle = document.createElement("div");
     taskBoxTitle.id = "taskBoxTitle";
@@ -28,11 +42,17 @@ function taskBoxFactory (Task, parent) {
 
     let myTaskBubble = taskBox.querySelector("#taskBubble");
 
+    let taskButtons = document.createElement("div");
+    taskButtons.id = "taskButtonz";
+    taskBox.appendChild(taskButtons);
+
     let taskBubbleButton = document.createElement("button");
-    taskBox.appendChild(taskBubbleButton);
+    taskButtons.appendChild(taskBubbleButton);
+    taskBubbleButton.classList.add("taskButtonsYo");
     taskBubbleButton.textContent = "View";
+    taskBubbleButton.id = "viewButton";
     taskBubbleButton.addEventListener("click", () => {
-        myTaskBubble.style.display = "block";
+        myTaskBubble.style.display = "flex";
     });
 
     function taskBubble (Task) {
@@ -47,21 +67,26 @@ function taskBoxFactory (Task, parent) {
         let myPriority = myTaskBox.querySelector("#taskBoxPriority");
     
         let taskBubbleTitle = document.createElement("input");
+        taskBubbleTitle.id = "taskBubbleTitle";
         taskBubbleTitle.type = "text";
         taskBubble.appendChild(taskBubbleTitle);
         taskBubbleTitle.value = myTitle.textContent;
     
-        let taskBubbleDescription = document.createElement("input");
-        taskBubbleDescription.type = "text";
+        let taskBubbleDescription = document.createElement("textarea");
+        taskBubbleDescription.id = "taskBubbleDescription";
         taskBubble.appendChild(taskBubbleDescription);
+        taskBubbleDescription.cols = "50";
+        taskBubbleDescription.rows = "20";
         taskBubbleDescription.value = Task.description;
     
         let taskBubbleDueDate = document.createElement("input");
+        taskBubbleDueDate.id = "taskBubbleDueDate";
         taskBubbleDueDate.type = "date";
         taskBubble.appendChild(taskBubbleDueDate);
-        taskBubbleDueDate.textContent = myDueDate.textContent;
+        taskBubbleDueDate.value = myDueDate.textContent;
     
         let taskBubblePriority = document.createElement("select");
+        taskBubblePriority.id = "taskBubblePriority";
         taskBubble.appendChild(taskBubblePriority);
         let highPri = document.createElement("option");
         highPri.text = "High";
@@ -74,6 +99,7 @@ function taskBoxFactory (Task, parent) {
         taskBubblePriority.appendChild(lowPri);
         
         let doneButton = document.createElement("button");
+        doneButton.id = "taskBubbleDone";
         taskBubble.appendChild(doneButton);
         doneButton.textContent = "Finish";
         doneButton.addEventListener("click", () => {
@@ -85,7 +111,9 @@ function taskBoxFactory (Task, parent) {
     };
 
     const taskDelete = document.createElement("button");
-    taskBox.appendChild(taskDelete);
+    taskButtons.appendChild(taskDelete);
+    taskDelete.classList.add("taskButtonsYo");
+    taskDelete.id = "removeButton";
     taskDelete.textContent = "Remove";
     taskDelete.addEventListener("click", () => {
         taskBox.parentElement.removeChild(taskBox);

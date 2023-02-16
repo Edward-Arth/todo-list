@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Nunito;
+    src: url(./fonts/Nunito-VariableFont_wght.ttf);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,12 +12,21 @@ body {
     width: 100vw;
     height: 100vh;
     display:grid;
-    grid-template-rows: 1fr 7fr;
-    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr 4fr;
 }
 
 #header {
     grid-area: 1/1/1/3;
+    background-color: #3399CC;
+    display:flex;
+    align-items: center;
+}
+
+#pageTitle {
+    font-size:300%;
+    font-family: Nunito;
+    margin-left: 5%;
 }
 
 #projectDisplay {
@@ -20,20 +34,323 @@ body {
 }
 
 #sidebar {
-    grid-area: 2/1/2/1
+    grid-area: 2/1/2/1;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
 }
 
-#taskForm,
+#projectList {
+    padding:0%;
+    width:80%;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    font-family: Nunito;
+    list-style: none;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:85%;
+    height:50px;
+    background-color: #4FFFB0;
+    margin-bottom: 5px;
+    font-size:115%;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+#newProject {
+    font-family: Nunito;
+    border-style: none;
+    font-size: 150%;
+    background-color: whitesmoke;
+}
+
+#newProject:hover {
+    box-shadow: inset 0 0 3px;
+}
+
+li:hover {
+    box-shadow: inset 0 0 3px;
+}
+
 #projectForm {
-    width: 20%;
-    height:40%;
-    margin-top: 3%;
     position:fixed;
-    top:25%;
+    top:10%;
+    left: 2%;
+    height: 100vh;
+    width: 300px;
     background-color: #E8E8E8;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 150%;
+    font-family: Nunito;
+    background-color: whitesmoke;
 }
 
-#taskForm,
-#projectForm {
-    display: none;
+#taskForm {
+    position:fixed;
+    top:11%;
+    left: 60.5%;
+    transform: translate(-50%, 0);
+    height: 600px;
+    width: 400px;
+    background-color: #E8E8E8;
+    display:flex;
+    flex-direction: column;
+    font-size: 150%;
+    font-family: Nunito;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+#projectForm,
+#taskForm {
+    display:none;
+}
+
+#taskFormTitle {
+    font-size:150%;
+    font-weight: bold;
+    text-align: center;
+}
+
+#priorityLabel {
+    margin-bottom: 5px;
+}
+
+#priorityDiv {
+    font-size:70%;
+    margin-left:10px;
+}
+
+.taskInputs {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.taskLabels {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#projectLabel {
+    margin-bottom: 5px;
+}
+
+#descriptionID {
+    height:70%;
+    resize:none;
+}
+
+#dueDateID {
+    height: 60px;
+}
+
+#taskID {
+    height:60px;
+}
+
+#taskButtons {
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    margin:0;
+}
+
+#taskButtonz {
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    margin:0;
+    width:20%;
+}
+
+.taskButtonsYo {
+    font-family: Nunito;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: white;
+    width:80px;
+    height:30px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+#viewButton:hover {
+    background-color: #4FFFB0;
+}
+
+#removeButton:hover {
+    background-color: red;
+}
+
+.taskBtns {
+    border-style: none;
+    font-size: 125%;
+    background-color: whitesmoke;
+    margin-left: 5px;
+    margin-right:5px;
+}
+
+.taskBtns:hover {
+    box-shadow: inset 0 0 3px;
+}
+
+#projectDiv {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+
+#taskList {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:50%;
+    height:60%;
+    padding-top: 20px;
+}
+
+#taskBox {
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    width:100%;
+    height:40px;
+    font-family:Nunito;
+    padding:5px;
+}
+
+#taskBoxTitle {
+    width:55%;
+    display:flex;
+    justify-content: center;
+}
+
+#taskBoxDueDate {
+    width:15%;
+    display:flex;
+    justify-content: center;
+}
+
+#taskBoxPriority {
+    width: 10%;
+    display:flex;
+    justify-content: center;
+}
+
+.newTaskButtons {
+    font-family: Nunito;
+    font-size: 150%;
+    border-style: none;
+    margin-top: 10px;
+    width:50%;
+    background-color: white;
+}
+
+.newTaskButtons:hover {
+    background-color: whitesmoke;
+}
+
+#taskBox:hover {
+    background-color: whitesmoke;
+}
+
+#taskBubble {
+    position: fixed;
+    top:10%;
+    left: 60%;
+    transform: translate(-50%, 0);
+    height: 50vh;
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+    font-size: 150%;
+    font-family: Nunito;
+    background-color: white;
+    border-radius: 20px;
+    align-items: center;
+}
+
+#taskBubbleTitle {
+    margin-top: 10px;
+    width:50%;
+    height:5%;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding:5px;
+    background-color: whitesmoke;
+    font-family: Nunito;
+}
+
+#taskBubbleDescription {
+    height:25%;
+    width:50%;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding:5px;
+    background-color: whitesmoke;
+    font-family: Nunito;
+    resize:none;
+}
+
+#taskBubbleDueDate {
+    width:10%;
+    margin-bottom: 10px;
+    font-family: Nunito;
+}
+
+#taskBubblePriority {
+    width:10%;
+    margin-bottom: 10px;
+    font-family: Nunito;
+}
+
+#taskBubbleDone {
+    width:8%;
+    font-family: Nunito;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#taskBubbleDone:hover {
+    background-color: #4FFFB0;
+}
+
+#completeButton {
+    width:20px;
+    height:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 120%;
+}
+
+#listedTitle {
+    width:90%;
+    display:flex;
+    justify-content: center;
+}
+
+#deleteProject {
+    display:none;
+    border-style: none;
+    background-color: transparent;
+    font-size: 90%;
+    margin-right: 5px;
+    color:red;
 }
