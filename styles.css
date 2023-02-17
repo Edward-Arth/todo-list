@@ -13,7 +13,7 @@ body {
     height: 100vh;
     display:grid;
     grid-template-rows: 1fr 9fr;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: minmax(250px, 1fr) 4fr;
 }
 
 #header {
@@ -84,9 +84,10 @@ li:hover {
 #projectForm {
     position:fixed;
     top:10%;
-    left: 2%;
+    left:2%;
     height: 100vh;
-    width: 300px;
+    min-width: 250px;
+    max-width: 20vw;
     background-color: #E8E8E8;
     display:flex;
     flex-direction: column;
@@ -101,8 +102,9 @@ li:hover {
     top:11%;
     left: 60.5%;
     transform: translate(-50%, 0);
-    height: 600px;
-    width: 400px;
+    height: 60%;
+    width: 40%;
+    min-width: 252px;
     background-color: #E8E8E8;
     display:flex;
     flex-direction: column;
@@ -149,11 +151,13 @@ li:hover {
 
 #descriptionID {
     height:70%;
+    min-height: 130px;
     resize:none;
 }
 
 #dueDateID {
     height: 60px;
+    min-height: 21px;
 }
 
 #taskID {
@@ -166,6 +170,7 @@ li:hover {
     margin-top: 20px;
     align-items: center;
     margin:0;
+    width:100%;
 }
 
 #taskButtonz {
@@ -175,6 +180,7 @@ li:hover {
     align-items: center;
     margin:0;
     width:20%;
+    min-width: 116px;
 }
 
 .taskButtonsYo {
@@ -202,6 +208,7 @@ li:hover {
     background-color: whitesmoke;
     margin-left: 5px;
     margin-right:5px;
+    width:45%;
 }
 
 .taskBtns:hover {
@@ -237,20 +244,26 @@ li:hover {
 
 #taskBoxTitle {
     width:55%;
+    overflow:auto;
     display:flex;
     justify-content: center;
+    margin: 2px;
 }
 
 #taskBoxDueDate {
     width:15%;
+    min-width: 91px;
     display:flex;
     justify-content: center;
+    margin:2px;
 }
 
 #taskBoxPriority {
     width: 10%;
+    min-width: 55px;
     display:flex;
     justify-content: center;
+    margin:2px;
 }
 
 .newTaskButtons {
@@ -260,6 +273,7 @@ li:hover {
     margin-top: 10px;
     width:50%;
     background-color: white;
+    margin:2px;
 }
 
 .newTaskButtons:hover {
@@ -277,6 +291,7 @@ li:hover {
     transform: translate(-50%, 0);
     height: 50vh;
     width: 50%;
+    min-width: 650px;
     display:flex;
     flex-direction: column;
     font-size: 150%;
