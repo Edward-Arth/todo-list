@@ -86,8 +86,8 @@ li:hover {
     top:10%;
     left:2%;
     height: 100vh;
+    width:18vw;
     min-width: 250px;
-    max-width: 20vw;
     background-color: #E8E8E8;
     display:flex;
     flex-direction: column;
@@ -244,6 +244,7 @@ li:hover {
 
 #taskBoxTitle {
     width:55%;
+    min-width: 180px;
     overflow:auto;
     display:flex;
     justify-content: center;

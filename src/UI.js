@@ -1,5 +1,9 @@
-import taskSubmitFunky from './task.js';
+import * as MyFn from './task.js';
+import { taskArrayMem } from './task.js';
+export let taskListId = [];
+export let taskListClass = [];
 export default function userInterface () {
+
     const projectArray = [];
     const sidebar = document.getElementById("sidebar");
     const projectForm = document.getElementById("projectForm");
@@ -8,6 +12,31 @@ export default function userInterface () {
     const taskForm = document.getElementById("taskForm");
     const taskCancel = document.getElementById("taskCancel");
     const taskSubmit = document.getElementById("taskSubmit");
+    const getList = document.getElementById("projectList");
+
+    let priorProjects = localStorage.getItem("projectArray");
+    let priorProjects2 = JSON.parse(priorProjects);
+
+    if (priorProjects2 != null) {
+        for (let i = 0; i < priorProjects2.length; i++) {
+            projectArray.push(priorProjects2[i]);
+            listProject ();
+        };
+    };
+
+    let priorTasks = JSON.parse(localStorage.getItem("taskArray"));
+
+    let priorTaskId = JSON.parse(localStorage.getItem("taskListId"));
+    let priorTaskClass = JSON.parse(localStorage.getItem("taskListClass"));
+
+    if (priorTasks != null) {
+        for (let i = 0; i < priorTasks.length; i++) {
+            taskListId.push(priorTaskId[i]);
+            taskListClass.push(priorTaskClass[i]);
+            taskArrayMem.push(priorTasks[i]);
+            MyFn.taskBoxFactory(priorTasks[i], document.querySelector("." + CSS.escape(priorTaskClass[i]) + "#" + CSS.escape(priorTaskId[i])));
+        };
+    };
 
     const newProjectButton = (() => {
         const newProject = document.createElement("button");
@@ -47,7 +76,6 @@ export default function userInterface () {
 
     function listProject () {
         let newProject = projectArray.slice(-1);
-        let getList = document.getElementById("projectList");
         let listed = document.createElement("li");
         getList.appendChild(listed);
         let newProjectStr = newProject.toString();
@@ -67,6 +95,22 @@ export default function userInterface () {
             let wholeClass = document.getElementsByClassName(projectClassName);
             while(wholeClass[0]) {
                 wholeClass[0].parentNode.removeChild(wholeClass[0]);
+            };
+            let storageDelete = projectArray.indexOf(newProjectStr);
+            if (storageDelete !== -1) {
+                projectArray.splice(storageDelete, 1);
+            };
+            for (let i=0; i < taskArrayMem.length; i++) {
+                let storageDelete2 = taskListClass.indexOf(newProjectStr);
+                if (storageDelete2 !== -1) {
+                    taskListClass.splice(storageDelete2, 1);
+                    taskArrayMem.splice(storageDelete2, 1);
+                    taskListId.splice(storageDelete2, 1);
+                }
+                localStorage.setItem("projectArray", JSON.stringify(projectArray));
+                localStorage.setItem("taskListId", JSON.stringify(taskListId));
+                localStorage.setItem("taskListClass", JSON.stringify(taskListClass));
+                localStorage.setItem("taskArray", JSON.stringify(taskArrayMem));
             };
         });
 
@@ -111,6 +155,7 @@ export default function userInterface () {
         else {
             projectArray.push(projectName);
             listProject ();
+            localStorage.setItem("projectArray", JSON.stringify(projectArray));
             projectForm.style.display = "none";
             projectForm.reset();
         };
@@ -131,8 +176,18 @@ export default function userInterface () {
 
     function taskSubmitClick (event) {
         event.preventDefault();
-        let taskList = getTaskList();
-        taskSubmitFunky(taskList);
-        taskList.style.display = "flex";
+        const taskID = document.querySelector("#taskID").value;
+        if (taskID == "" || taskID.match(/^\s|\s$/)) {
+            return false;
+        }
+        else {
+            let taskList = getTaskList();
+            MyFn.taskSubmitFunky(taskList);
+            taskListId.push(taskList.id);
+            taskListClass.push(taskList.className);
+            localStorage.setItem("taskListId", JSON.stringify(taskListId));
+            localStorage.setItem("taskListClass", JSON.stringify(taskListClass));
+            taskList.style.display = "flex";
+        };
     };
 };
